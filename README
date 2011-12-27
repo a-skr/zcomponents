@@ -1,0 +1,23 @@
+Welcome
+-------
+
+oc2/zcomponents is part of the oc2 (Open Command and Control) framework. It is 
+based on 0MQ lightweight messaging kernel, and is designed to develop fast non
+real-time processing software.
+
+Building and installation
+-------------------------
+
+See the INSTALL file included with this distribution.
+
+Resources
+---------
+
+Git repository: http://github.com/oc2/libzcomponents
+
+Copying
+-------
+
+Free use of this software is granted under the terms of the GNU Lesser General
+Public License (LGPL). For details see the files `COPYING` and `COPYING.LESSER`
+included with the 0MQ distribution.
