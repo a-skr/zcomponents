@@ -1,0 +1,8 @@
+# ignore compiled binaries
+test_zreactor_fdevents_registration
+test_zreactor_run_halt
+test_zreactor_sockevents_registration
+test_ztask_invoke
+test_ztask_invoke_halt
+test_ztask_periodic
+test_ztask_run_halt

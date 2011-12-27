@@ -1,0 +1,29 @@
+# ignore temporary files
+*~
+
+# ignore autotools/libtool files
+Makefile.in
+Makefile
+aclocal.m4
+autom4te.cache/
+config.h.in
+config.h
+config.status
+config.log
+config/
+configure
+.deps/
+stamp-h1
+libtool
+.libs/
+
+# ignore compiled files
+*.lo
+*.la
+*.o
+
+# changelogs are generated
+ChangeLog
+
+# ignore archive files
+zcomponents-*.tar.*
