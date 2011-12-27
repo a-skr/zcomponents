@@ -9,11 +9,15 @@ Building and installation
 -------------------------
 
 See the INSTALL file included with this distribution.
+You may have to run the autogen.sh script to bootstrap autotools build.
 
 Resources
 ---------
 
-Git repository: http://github.com/oc2/libzcomponents
+Git repository: http://github.com/a-skr/zcomponents
+
+To get sources, use this command:
+git clone git://github.com/a-skr/zcomponents.git
 
 Copying
 -------
