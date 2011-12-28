@@ -1,0 +1,42 @@
+Source: zcomponents
+Priority: extra
+Maintainer: Alexandre Skrzyniarz <alexandre.skrzyniarz@laposte.net>
+Build-Depends: debhelper (>= 8.0.0), autotools-dev, libzmq-dev (>= 2.1.10)
+Standards-Version: 3.9.2
+Section: libs
+#Homepage: <insert the upstream URL, if relevant>
+#Vcs-Git: git://git.debian.org/collab-maint/zcomponents.git
+#Vcs-Browser: http://git.debian.org/?p=collab-maint/zcomponents.git;a=summary
+
+Package: libzcomponents-dev
+Section: libdevel
+Architecture: any
+Depends: libzcomponents0 (= ${binary:Version}), libzmq-dev (>= 2.1.10)
+Description: oc2/zcomponents runtime library
+ oc2/zcomponents is part of the oc2 (Open Command and Control) framework. It is 
+ based on the 0MQ lightweight messaging kernel, and is designed to develop fast 
+ non real-time processing software.
+ .
+ This package contains the runtime library.
+
+Package: libzcomponents0
+Section: libs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: oc2/zcomponents development files
+ oc2/zcomponents is part of the oc2 (Open Command and Control) framework. It is 
+ based on the 0MQ lightweight messaging kernel, and is designed to develop fast 
+ non real-time processing software.
+ .
+ This package contains the library headers.
+
+Package: libzcomponents-dbg
+Section: debug
+Architecture: any
+Depends: libzcomponents0 (= ${binary:Version}), ${misc:Depends}
+Description: oc2/zcomponents debugging symbols
+ oc2/zcomponents is part of the oc2 (Open Command and Control) framework. It is 
+ based on the 0MQ lightweight messaging kernel, and is designed to develop fast 
+ non real-time processing software.
+ .
+ This package contains the library debugging symbols.

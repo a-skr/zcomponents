@@ -6,7 +6,7 @@ maintainer-clean-local:
 SUBDIRS = oc2 tests
 ACLOCAL_AMFLAGS = -I config
 
-EXTRA_DIST = autogen.sh
+EXTRA_DIST = autogen.sh debian
 
 dist-hook:
 	@if test -d "$(srcdir)/.git"; \

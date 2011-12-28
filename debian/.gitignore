@@ -1,0 +1,9 @@
+# ignore dpkg-buildpackage generated files.
+files
+*.debhelper.log
+*.debhelper
+*.substvars
+libzcomponents-dbg/*
+libzcomponents-dev/*
+libzcomponents0/*
+tmp/*

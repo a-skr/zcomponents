@@ -1,0 +1,4 @@
+usr/include/*
+usr/lib/libzcomponents.so
+usr/lib/libzcomponents.a
+usr/lib/pkgconfig/libzcomponents.pc
