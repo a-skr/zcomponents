@@ -3,6 +3,7 @@ MAINTAINERCLEANFILES = Makefile.in
 # to build
 lib_LTLIBRARIES = libzcomponents.la
 oc2include_HEADERS = ZReactor.hpp ZTask.hpp
+pkgconfig_DATA = libzcomponents.pc
 
 # libraries
 libzcomponents_la_SOURCES = init.cpp Logger.hpp Logger.cpp ZReactor.hpp ZReactor.cpp ZReactorImpl.hpp ZReactorImpl.cpp ZTaskImpl.hpp ZTaskImpl.cpp ZTask.hpp ZTask.cpp

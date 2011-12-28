@@ -17,13 +17,14 @@ AC_PROG_CXX
 # check for libraries
 PKG_CHECK_MODULES([ZEROMQ], libzmq)
 
-# custom path to install oc2 headers in .../include/oc2
+# custom path to install files
 AC_SUBST(oc2includedir, [${includedir}/oc2])
+AC_SUBST(pkgconfigdir, [${libdir}/pkgconfig])
 
 # headers
 AC_HEADER_STDBOOL
 AM_CONFIG_HEADER(config.h)
 
 # output files
-AC_CONFIG_FILES(Makefile oc2/Makefile tests/Makefile)
+AC_CONFIG_FILES(Makefile oc2/Makefile oc2/libzcomponents.pc tests/Makefile)
 AC_OUTPUT
