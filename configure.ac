@@ -16,6 +16,7 @@ AC_PROG_CXX
 
 # check for libraries
 PKG_CHECK_MODULES([ZEROMQ], libzmq)
+AC_CHECK_LIB([pthread], [pthread_create])
 
 # custom path to install files
 AC_SUBST(oc2includedir, [${includedir}/oc2])
