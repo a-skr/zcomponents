@@ -22,8 +22,10 @@ Building from git tree
 ----------------------
 
 The git tree doesn't include autotools generated scripts. You will have to run
-the autogen.sh script. The generated ChangeLog file will be empty. It is filled
-when the "dist" or "dist-check" targets are called.
+the autogen.sh script to generate the configure script.
+
+A custom "make changelog" target is availlable to update the ChangeLog file 
+from git logs.
 
 Debian package
 --------------
@@ -39,9 +41,3 @@ Copying
 Free use of this software is granted under the terms of the GNU Lesser General
 Public License (LGPL). For details see the files `COPYING` and `COPYING.LESSER`
 included with the oc2/zcomponents distribution.
-
-Bugs
-----
-
-Unless you generate debian packages from a packaged distribution (obtained with
-"make dist"), there will be no changelog.gz file in the packages.
