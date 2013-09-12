@@ -44,7 +44,7 @@ void ZReactorImpl::run_event_loop()
   while (_shall_continue)
     {
       // poll events
-      int rc = zmq::poll (_poll_items, _poll_length, -1);
+      int rc = zmq_poll (_poll_items, _poll_length, -1);
       if (rc ==-1) {
 	if (errno == EINTR || errno == EAGAIN)
 	  {
