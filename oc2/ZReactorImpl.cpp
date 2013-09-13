@@ -27,16 +27,17 @@ ZReactorImpl::ZReactorImpl (const char * control_url, zmq::context_t * context)
   : _shall_continue (false),
     _control_url (control_url), 
     _context (context),
-    _admin_socket (*_context, ZMQ_SUB),
+    _admin_socket (*_context, ZMQ_PULL),
     _poll_items (0),
     _poll_length (0)
 {
-  _admin_socket.setsockopt (ZMQ_SUBSCRIBE, "", 0);
   _admin_socket.bind (_control_url);
 }
 
 void ZReactorImpl::run_event_loop()
 {
+  DEBUG ("run main loop for reactor %s", _control_url);
+
   // build pollitem list
   build_pollitems ();
 
@@ -44,7 +45,9 @@ void ZReactorImpl::run_event_loop()
   while (_shall_continue)
     {
       // poll events
-      int rc = zmq_poll (_poll_items, _poll_length, -1);
+      DEBUG ("before poll %d", _poll_length);
+      int rc = zmq::poll (_poll_items, _poll_length, -1);
+      DEBUG ("after poll");
       if (rc ==-1) {
 	if (errno == EINTR || errno == EAGAIN)
 	  {
@@ -73,7 +76,8 @@ void ZReactorImpl::run_event_loop()
 
 void ZReactorImpl::halt()
 {
-  zmq::socket_t sock (*_context, ZMQ_PUB);
+  DEBUG ("halt requested for %s", _control_url);
+  zmq::socket_t sock (*_context, ZMQ_PUSH);
   sock.connect (_control_url);
 
   struct ZControlMessage message;
@@ -106,7 +110,7 @@ void ZReactorImpl::admin_callback (struct ZControlMessage * cmsg)
 
 void ZReactorImpl::register_events (int fd, ZCallback * cb, int mask)
 {
-  zmq::socket_t asock (*_context, ZMQ_PUB);
+  zmq::socket_t asock (*_context, ZMQ_PUSH);
   asock.connect (_control_url);
 
   struct ZControlMessage message;
@@ -123,7 +127,7 @@ void ZReactorImpl::register_events (int fd, ZCallback * cb, int mask)
 
 void ZReactorImpl::register_events(zmq::socket_t * sock, ZCallback * cb, int mask)
 {
-  zmq::socket_t asock (*_context, ZMQ_PUB);
+  zmq::socket_t asock (*_context, ZMQ_PUSH);
   asock.connect (_control_url);
   
   struct ZControlMessage message;
@@ -140,7 +144,7 @@ void ZReactorImpl::register_events(zmq::socket_t * sock, ZCallback * cb, int mas
 
 void ZReactorImpl::unregister_events(int fd)
 {
-  zmq::socket_t asock (*_context, ZMQ_PUB);
+  zmq::socket_t asock (*_context, ZMQ_PUSH);
   asock.connect (_control_url);
 
   struct ZControlMessage message;
@@ -157,7 +161,7 @@ void ZReactorImpl::unregister_events(int fd)
 
 void ZReactorImpl::unregister_events(zmq::socket_t * sock)
 {
-  zmq::socket_t asock (*_context, ZMQ_PUB);
+  zmq::socket_t asock (*_context, ZMQ_PUSH);
   asock.connect (_control_url);
 
   struct ZControlMessage message;

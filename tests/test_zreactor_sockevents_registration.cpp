@@ -66,6 +66,9 @@ int main (int, char **)
   // register
   reactor.register_events (&sub_sock, &handler);
   
+  // late joiner syndrome. Sleep a bit for pub/sub
+  usleep (100000);
+
   // stimulate
   zmq::message_t msg;
   pub_sock.send(msg);

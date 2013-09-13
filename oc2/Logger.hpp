@@ -32,7 +32,7 @@
 
 #define INFO(fmt,...) { if (oc2::Logger::loglevel >= oc2::Logger::INFO) fprintf (stderr, "[info] (file: %s, line: %d) " fmt "\n", __FILE__, __LINE__, __VA_ARGS__); }
 
-#define DEBUG(fmt,...) {if (oc2::Logger::loglevel >= oc2::Logger::DEBUG) fprintf (stderr, "[debug] (file: %s, line: %d) " fmt "\n", __FILE__, __LINE__, __VA_ARGS__); }
+#define DEBUG(fmt,...) {if (oc2::Logger::loglevel >= oc2::Logger::DEBUG) fprintf (stderr, "[debug] (file: %s, line: %d) " fmt "\n", __FILE__, __LINE__, ##__VA_ARGS__); }
 
 namespace oc2
 {
