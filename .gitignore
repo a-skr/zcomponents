@@ -28,3 +28,7 @@ ChangeLog
 
 # ignore archive files
 zcomponents-*.tar.*
+
+# ignore autoscan files
+autoscan.log
+configure.scan
