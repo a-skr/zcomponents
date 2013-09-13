@@ -1,7 +1,7 @@
 Source: zcomponents
 Priority: extra
 Maintainer: Alexandre Skrzyniarz <alexandre.skrzyniarz@laposte.net>
-Build-Depends: debhelper (>= 8.0.0), autotools-dev, libzmq-dev (>= 2.1.10)
+Build-Depends: debhelper (>= 8.0.0), autotools-dev, libzmq3-dev
 Standards-Version: 3.9.2
 Section: libs
 #Homepage: <insert the upstream URL, if relevant>
@@ -11,7 +11,7 @@ Section: libs
 Package: libzcomponents-dev
 Section: libdevel
 Architecture: any
-Depends: libzcomponents0 (= ${binary:Version}), libzmq-dev (>= 2.1.10)
+Depends: libzcomponents0 (= ${binary:Version}), libzmq3-dev 
 Description: oc2/zcomponents runtime library
  oc2/zcomponents is part of the oc2 (Open Command and Control) framework. It is 
  based on the 0MQ lightweight messaging kernel, and is designed to develop fast 

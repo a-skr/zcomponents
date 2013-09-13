@@ -1,4 +1,10 @@
-zcomponents (0.0.1~alpha-1) unstable; urgency=low
+zcomponents (0.0.2) UNRELEASED; urgency=low
+
+  * New version that uses zmq3 
+
+ -- Alexandre Skrzyniarz <alexandre.skrzyniarz@laposte.net>  Fri, 13 Sep 2013 12:36:08 +0200
+
+zcomponents (0.0.1~alpha-1) UNRELEASED; urgency=low
 
   * Initial Release.
 
