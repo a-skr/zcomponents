@@ -17,13 +17,10 @@
 # You should have received a copy of the GNU General Public License
 # along with oc2/zcomponents.  If not, see <http://www.gnu.org/licenses/>.
 
-if [ ! -f ChangeLog ]
-then
-    touch ChangeLog
-fi
+set -e 
 
-echo "Running aclocal..." ; aclocal $ACLOCAL_FLAGS || exit 1
-echo "Running libtoolize..." ; libtoolize || exit 1
-echo "Running autoheader..." ; autoheader || exit 1
-echo "Running autoconf..." ; autoconf || exit 1
-echo "Running automake..." ; automake --add-missing --copy --gnu || exit 1
+here=$(dirname $(readlink -f $0))
+
+test -f $here/ChangeLog || touch $here/ChangeLog
+test -d $here/config || mkdir $here/config
+cd $here && autoreconf -i

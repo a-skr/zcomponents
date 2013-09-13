@@ -24,6 +24,7 @@ AC_SUBST(pkgconfigdir, [${libdir}/pkgconfig])
 
 # headers
 AC_HEADER_STDBOOL
+AC_TYPE_UINT64_T
 AM_CONFIG_HEADER(config.h)
 
 # output files
