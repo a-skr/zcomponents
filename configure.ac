@@ -1,6 +1,6 @@
 # Prelude
 AC_PREREQ(2.68)
-AC_INIT(zcomponents, 0.0.2, alexandre.skrzyniarz@laposte.net)
+AC_INIT(zcomponents, 0.0.3, alexandre.skrzyniarz@laposte.net)
 AC_CONFIG_MACRO_DIR(config)
 AC_CONFIG_AUX_DIR(config)
 AM_INIT_AUTOMAKE(-Wall -Werror 1.9 dist-bzip2)
