@@ -32,3 +32,6 @@ zcomponents-*.tar.*
 # ignore autoscan files
 autoscan.log
 configure.scan
+
+# ignore local build dir
+build/
