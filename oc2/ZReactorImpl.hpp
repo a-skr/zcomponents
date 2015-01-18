@@ -44,9 +44,14 @@ namespace oc2
     ZReactorImpl (const char * control_url, zmq::context_t * context);
 
     /**
+     * @brief Destructor
+     */
+    ~ZReactorImpl();
+
+    /**
      * the current thread will run the event loop (poll file descriptors).
      */
-    void run_event_loop();
+    void run_event_loop(int timeout_ms);
     
     /**
      * Those methods shall be used only when the reactor is running.

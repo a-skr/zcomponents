@@ -33,9 +33,9 @@ ZReactor::~ZReactor ()
   delete PIMPL;
 }
 
-void ZReactor::run_event_loop()
+void ZReactor::run_event_loop(int timeout_ms)
 {
-  PIMPL -> run_event_loop ();
+  PIMPL -> run_event_loop (timeout_ms);
 }
 
 void ZReactor::halt()

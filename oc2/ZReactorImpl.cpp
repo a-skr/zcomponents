@@ -34,28 +34,37 @@ ZReactorImpl::ZReactorImpl (const char * control_url, zmq::context_t * context)
   _admin_socket.bind (_control_url);
 }
 
-void ZReactorImpl::run_event_loop()
+ZReactorImpl::~ZReactorImpl()
+{
+  if (_poll_items)
+    delete [] _poll_items;
+}
+
+void ZReactorImpl::run_event_loop(int timeout_ms)
 {
   DEBUG ("run main loop for reactor %s", _control_url);
-
+  
   // build pollitem list
   build_pollitems ();
-
+  
   _shall_continue = true;
   while (_shall_continue)
     {
       // poll events
       DEBUG ("before poll %d", _poll_length);
-      int rc = zmq::poll (_poll_items, _poll_length, -1);
+      int rc = zmq::poll (_poll_items, _poll_length, timeout_ms);
       DEBUG ("after poll");
       if (rc ==-1) {
-	if (errno == EINTR || errno == EAGAIN)
+        if (errno == EINTR || errno == EAGAIN)
 	  {
 	    DEBUG ("poll: %s.", sys_errlist[errno]);
 	    continue;
 	  }
-	else
-	  ABORT ("poll: %s.", sys_errlist[errno]);
+        else
+          ABORT ("poll: %s.", sys_errlist[errno]);
+      } else if (rc == 0) {
+        // timeout reached
+        _shall_continue = false;
       }
       
       // handle admin socket first (always the first item in poll items).
@@ -67,7 +76,7 @@ void ZReactorImpl::run_event_loop()
 	  admin_callback (cmsg);
 	  continue;
 	}
-
+      
       // handle other events in registration order.
       for (unsigned idx = 1 ; idx < _poll_length ; ++idx)
 	trigger_callback (_poll_items[idx]);

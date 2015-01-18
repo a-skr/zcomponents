@@ -61,8 +61,10 @@ namespace oc2
 
     /**
      * the current thread will run the event loop (poll file descriptors).
+     * @param timeout_ms timeout in millisecond before returning.
+     *        -1 means no timeout.
      */
-    void run_event_loop ();
+    void run_event_loop (int timeout_ms = -1);
     
     /**
      * Those methods will queue up an event on the admin queue. events on the 
