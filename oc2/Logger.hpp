@@ -23,14 +23,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define ABORT(fmt,...) { if (oc2::Logger::loglevel >= oc2::Logger::ERROR) fprintf (stderr, "[fatal] (file: %s, line: %d) " fmt "\n", __FILE__, __LINE__, __VA_ARGS__); \
+#define ABORT(fmt,...) { if (oc2::Logger::loglevel >= oc2::Logger::ERROR) fprintf (stderr, "[fatal] (file: %s, line: %d) " fmt "\n", __FILE__, __LINE__, ##__VA_ARGS__); \
   abort (); }
 
-#define ERROR(fmt,...) { if (oc2::Logger::loglevel >= oc2::Logger::ERROR) fprintf (stderr, "[error] (file: %s, line: %d) " fmt "\n", __FILE__, __LINE__, __VA_ARGS__); }
+#define ERROR(fmt,...) { if (oc2::Logger::loglevel >= oc2::Logger::ERROR) fprintf (stderr, "[error] (file: %s, line: %d) " fmt "\n", __FILE__, __LINE__, ##__VA_ARGS__); }
 
-#define WARNING(fmt,...) { if (oc2::Logger::loglevel >= oc2::Logger::WARNING) fprintf (stderr, "[warning] (file: %s, line: %d) " fmt "\n", __FILE__, __LINE__, __VA_ARGS__); }
+#define WARNING(fmt,...) { if (oc2::Logger::loglevel >= oc2::Logger::WARNING) fprintf (stderr, "[warning] (file: %s, line: %d) " fmt "\n", __FILE__, __LINE__, ##__VA_ARGS__); }
 
-#define INFO(fmt,...) { if (oc2::Logger::loglevel >= oc2::Logger::INFO) fprintf (stderr, "[info] (file: %s, line: %d) " fmt "\n", __FILE__, __LINE__, __VA_ARGS__); }
+#define INFO(fmt,...) { if (oc2::Logger::loglevel >= oc2::Logger::INFO) fprintf (stderr, "[info] (file: %s, line: %d) " fmt "\n", __FILE__, __LINE__, ##__VA_ARGS__); }
 
 #define DEBUG(fmt,...) {if (oc2::Logger::loglevel >= oc2::Logger::DEBUG) fprintf (stderr, "[debug] (file: %s, line: %d) " fmt "\n", __FILE__, __LINE__, ##__VA_ARGS__); }
 
